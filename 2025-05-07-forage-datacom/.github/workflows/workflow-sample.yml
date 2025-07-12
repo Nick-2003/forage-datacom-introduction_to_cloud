@@ -1,0 +1,21 @@
+# Derived from previous work in UBC DSCI 310
+
+name: main # Workflow name of main
+
+on: # Could even schedule this process 
+  workflow_dispatch: # If manually run in Github interface
+  push: # If push happens to the repository 
+    branches: [main] # Only triggers on any change to the main branch
+
+jobs:
+  push_to_registry:
+    name: sample # 1 job named "sample" 
+    runs-on: ubuntu-latest # The sample job uses the ubuntu-latest runner
+    steps:
+      - name: Check out the repo # Step 1 checks out the repository
+        uses: actions/checkout@v4
+
+      - name: Run basic terminal commands # Step 2 has a name of “Run basic terminal commands”, and runs the commands in the terminal to return the current working directory and lists all the files in the current directory. These commands are to be done in a single Step
+        run: | 
+          pwd
+          ls -a 
